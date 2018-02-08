@@ -8,13 +8,13 @@ var bot = linebot({
 });
 
 //這邊想要做的是如何讀取資料開放平台的資料
-bot.on
+bot.on('message', function(event) {
 var request = require('request); 
  request('http://www.google.com' , function (error , response, body){
    console.log('error:',error);
    console.log('statuCode:' , response && response.statusCode);
    console.log('body:', body);
- }
+}}
 
 const app = express();
 const linebotParser = bot.parser();
