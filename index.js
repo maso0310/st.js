@@ -12,13 +12,14 @@ var bot = linebot({
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = ;
+    var request = require("request");
+    var cheerio = require("cheerio");
+    const url = 'tw.shop.com/maso0310'
+    request(url, (err, res, body) => {
+      console.log(body)
+    })
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply({
-    "type": "image",
-    "originalContentUrl": "https://example.com/original.jpg",
-    "previewImageUrl": "https://example.com/preview.jpg"
-}).then(function(data) {
+    event.reply(request).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼
       console.log(msg);
     }).catch(function(error) {
