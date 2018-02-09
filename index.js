@@ -14,7 +14,7 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var request = require("request");
     var cheerio = require("cheerio");
-    const url = 'tw.shop.com/maso0310'
+    const url = 'https://tw.shop.com/maso0310/search/'+event.message.text;
     request(url, (err, res, body) => {
       console.log(body)
     })
