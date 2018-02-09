@@ -9,14 +9,28 @@ var bot = linebot({
 
 
 
-//這邊想要做的是判讀如何回應
+//事件發生:用戶傳遞訊息，喚醒LINE BOT
 bot.on('message', function(event) {
-  if (event.message.type = 'text') {
+  //事件訊息屬性判定，是否為文字
+  if (event.message.type = 'text')  {
+    //設定要搜尋的網址頁面與用戶訊息之關聯
     var msg = "https://tw.shop.com/search/"+event.message.text;
+    const request = require('request')
+    const cheerio = require('cheerio')
+    const url = msg
+    //跟網頁要資料，取得整個網頁"body"
+    request(url, (err, res, body) => {
+      console.log(body)
+    })
+    //把body放進cheerio準備分析
+    const $ = cheerio.load(body)
+    let output = []
+    $('#box8 .quickview-btn-box div img').each(function(i,elem){output.push($(this).image().split)('\n')})
+    console.log(output)
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
+    event.reply(output).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
+      console.log(event.message.text);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
