@@ -25,7 +25,7 @@ bot.on('message', function(event) {
     //把body放進cheerio準備分析
     const $ = cheerio.load(body)
     let output = []
-    $('search .quickview-btn-box div img').each(function(i,elem){output.push($(this).image().split)('\n')})
+    $('search .final-price  span').each(function(i,elem){output.push($(this).text().split)('\n')})
     console.log(output)
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(output).then(function(data) {
