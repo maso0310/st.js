@@ -7,9 +7,11 @@ var bot = linebot({
   channelAccessToken: '295PO7c2FbLmq2jHznxmISTQciVcWy7DnEIArWCgSUKWPsorlKbbuRURYIYxWZYJXjlQ2Wj9Ik8nwuAz2qB2rc4EfKN56kdvBERkjx7F1OOPsjx8cdCNGhoLQtVfAR+TrFsuw73JsEKI2IA9gE719gdB04t89/1O/w1cDnyilFU='
 });
 
+
+
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
-  if (event.message.type = "我想要，"+'text') {
+  if (event.message.type = 'text') {
     var msg = "https://tw.shop.com/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
