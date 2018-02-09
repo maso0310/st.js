@@ -13,8 +13,8 @@ var bot = linebot({
 bot.on('message', function(event) 
 var a='我想要，';
 {
-  if (event.message = a + 'text') {
-    var msg = "https://tw.shop.com/search/"+'text';
+  if (event.message.type = a + 'text') {
+    var msg = "https://tw.shop.com/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
