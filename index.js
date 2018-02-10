@@ -14,7 +14,7 @@ bot.on('message', function(event) {
   if (event.message.type ='text')  {
     var url = '我想找';
     url.indexOf('我想找')!=-1;
-    then(var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;)
+    var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
       //收到文字訊息時，直接把收到的訊息傳回去
         event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
