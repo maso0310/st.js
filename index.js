@@ -15,11 +15,12 @@ bot.on('message', function(event) {
   if (event.message.type ='text')  {
     var url = event.message.text;
     url.indexOf(a)!=-1;
+  then
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text.replace(a);
       //收到文字訊息時，直接把收到的訊息傳回去
-        event.reply(msg).then(function(data) {
+        event.reply(msg2).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
+      console.log(msg2);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
