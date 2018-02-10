@@ -13,7 +13,7 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type ='我想找'+'text')  {
     var a = '我想找';  
-    var url = event.message.text;
+    var url = event.message;
     var str = url.replace(a);
     var msg = "https://tw.shop.com/maso0310/search/"+ str ;
       //收到文字訊息時，直接把收到的訊息傳回去
