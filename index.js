@@ -12,7 +12,7 @@ var bot = linebot({
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
   var a ='我想要，';
-  if (event.message.type = a+'text')  {
+  if (event.message.type = a + 'text')  {
     var msg = "https://tw.shop.com/maso0310/search"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
