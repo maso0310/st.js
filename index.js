@@ -18,7 +18,7 @@ bot.on('message', function(event) {
     request(url, function(error,res,body){
       console.log(body);
     });
-    
+
     var cheerio = require('cheerio');
     var $ = cherrio.load(body)
 
@@ -27,9 +27,9 @@ bot.on('message', function(event) {
       result.push($(this).text().split('\n'));
     });
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
+    event.reply(result).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
+      console.log(result);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
