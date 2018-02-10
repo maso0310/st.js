@@ -27,7 +27,6 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }
-  else{break};
 });
 
 const app = express();
