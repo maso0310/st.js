@@ -15,11 +15,17 @@ bot.on('message', function(event) {
     var str =event.message.text;
     var a ='我想找';
     var b =' ';
-    while (str.indexOf(a)=-1);break;
-    while (str.indexOf(a)!=-1);{ 
-    str = str.replace(a,b); }
-    var msg = "https://tw.shop.com/maso0310/search/"+str.trim();
+    
+    
+    while (str.indexOf(a)!=-1){ 
+      str = str.replace(a,b); }
+      var msg = "https://tw.shop.com/maso0310/search/"+str.trim();
       //收到文字訊息時，直接把收到的訊息傳回去
+    
+    while (str.indexOf(a)=-1);{
+      var msg = '請輸入"我想找"再打你想找的東西是什麼喔'
+    }
+
         event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
