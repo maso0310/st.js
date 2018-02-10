@@ -12,9 +12,11 @@ var bot = linebot({
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
   if (event.message.type ='text')  {
+  then
     var a = '我想找';  
     var url = event.message.text;
-    url.indexOf(a)!=-1;
+  
+  if (url.indexOf(a)!=-1);
     then 
     var str = url.replace(a);
     var msg = "https://tw.shop.com/maso0310/search/"+ str ;
