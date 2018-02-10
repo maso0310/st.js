@@ -13,14 +13,14 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = "https://tw.shop.com/search/"+event.message.text;
-    var request=require('request')
-    var url = msg
+    var request=require('request');
+    var url = msg;
     request(url, function(error,res,body){
       console.log(body);
     });
 
     var cheerio = require('cheerio');
-    var $ = cherrio.load(body)
+    var $ = cherrio.load(body);
 
     var result = [];
     $('section.search_resluts > ul#content > div.quickview-btn-box').each(function(){
