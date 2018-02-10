@@ -15,7 +15,7 @@ bot.on('message', function(event) {
     var str =event.message.text;
     var a ='我想找';
     while (str.indexOf(a)!=-1) {
-    str = str.replace(a);}        
+    str = str-a;}        
     var msg = "https://tw.shop.com/maso0310/search/"+str;
       //收到文字訊息時，直接把收到的訊息傳回去
         event.reply(msg).then(function(data) {
