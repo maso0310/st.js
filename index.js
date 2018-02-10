@@ -11,15 +11,10 @@ var bot = linebot({
 
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
-  if (event.message.type ='我想找'+'text')  {
-    var str =event.message.text;
-    var a ='我想找';
-    var b =' ';
-    while (str.indexOf(a)!=-1){ 
-    str = str.replace(a,b);}
-    var msg = "https://tw.shop.com/maso0310/search/"+str.trim();
-      //收到文字訊息時，直接把收到的訊息傳回去
-        event.reply(msg).then(function(data) {
+  if (event.message.type = 'text') {
+    var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
+  //收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
