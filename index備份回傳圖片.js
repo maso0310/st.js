@@ -13,24 +13,26 @@ bot.on('message', function(event) {
   if (event.message.type = 'text')  {
     //設定要搜尋的網址頁面與用戶訊息之關聯，還不知道怎麼做
     //跟網頁要資料，取得整個網頁"body"
-    var request = require('request');
-    var url = "https://tw.shop.com/search/"+event.message.text;
-    request(url, function(error,res,body){
-      console.log(body);
-      console.log(url);
-    });
 
-    //把body放進cheerio準備分析
-    var cheerio = require('cheerio');
-    var $ = cherrio.load(body)
-    var result = [];
-    $('section.search_resluts > ul#content > div.quickview-btn-box').each(function(){
+    const url = "https://tw.shop.com/maso0310/search/"+event.message.text;
+    const request = require('request');
+    
+    request({url, headers: {referer: 'https://tw.shop.com/'}}, 
+      function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body);
+        console.log(url)
+      }
+      //把body放進cheerio準備分析
+      const cheerio = require('cheerio');
+      const $ = cheerio.load(body);
+      const result = [];
+      $('section.search_resluts > ul#content > div.quickview-btn-box').each(function(){
       result.push($(this).text().split('\n'));
     });
+    });
 
-    
   //收到文字訊息時，直接把收到的訊息傳回去
-  then  
     event.reply(result).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(event.message.text);
