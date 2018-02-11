@@ -17,11 +17,12 @@ bot.on('message', function(event) {
     var url = "https://tw.shop.com/search/"+event.message.text;
     request(url, function(error,res,body){
       console.log(body);
+      console.log(url);
     });
+
     //把body放進cheerio準備分析
     var cheerio = require('cheerio');
     var $ = cherrio.load(body)
-
     var result = [];
     $('section.search_resluts > ul#content > div.quickview-btn-box').each(function(){
       result.push($(this).text().split('\n'));
