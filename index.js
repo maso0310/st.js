@@ -14,21 +14,24 @@ bot.on('message', function(event) {
     //設定要搜尋的網址頁面與用戶訊息之關聯，還不知道怎麼做
     //跟網頁要資料，取得整個網頁"body"
 
-    const url = "https://tw.shop.com/maso0310/search/"+event.message.text;
+
+    const url = "https://tw.shop.com/maso0310/search/"+'電腦';
     const request = require('request');
-    
-    request({url, headers: {referer: 'https://tw.shop.com/'}}, 
-      function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body);
-        console.log(url)
-      }
+    //暫存 headers:{referer: 'https://tw.shop.com/'}}
+    request({url,
+      headers:{referer: 'https://tw.shop.com', 
+      UserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'}}
+       , function (error, response, body) {
+      console.log(body);
+      console.log(url);
+      
       //把body放進cheerio準備分析
       const cheerio = require('cheerio');
       const $ = cheerio.load(body);
       const result = [];
       $('section.search_resluts > ul#content > div.quickview-btn-box').each(function(){
       result.push($(this).text().split('\n'));
+      console.log(result)
     });
     });
 
