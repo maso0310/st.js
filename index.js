@@ -21,10 +21,9 @@ bot.on('message', function(event) {
         const cheerio = require('cheerio');
         const $ = cheerio.load(body);
         let shop = []
-        $('li.clear a')
+        $('div.product-info')
         .each(function(i, elem) {
         shop.push($(this).text())
-
         event.reply(shop).then(function(data) {
           // 傳送訊息成功時，可在此寫程式碼 
           console.log(shop);
