@@ -1,20 +1,15 @@
-// 打开详情页
-var request = require('request'), cheerio = require('cheerio');
+var request = require('request')
+var url = 'http://tw.shop.com/maso0310/search/htc'
+request({url ,headers:{'user-agent':'node.js'} },
+  function (err, res, body){
+  console.log(body)
+})
 
-function loadInfo(url){
-  request({
-    url: "http://v.youku.com/v_show/id_XMTQ3Mzc1MTczNg==.html?from=y1.6-85.3.1.14b31ff68f3311e5a080&x",
-    headers: {
-      'User-Agent': 'http://v.youku.com/'
-    }
-  }, function fetch(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var $ = cheerio.load(body, {decodeEntities: false});
-      
-      var video = $('video');
-      console.log(video);
-    } else {
-      console.log('解析 HTML 错误或通讯故障。');
-    }
-  });
-}
+const cheerio = require('cheerio')
+// 把 body 放進 cheerio 準備分析
+const $ = cheerio.load(body)
+let shop = []
+$('section.search_resluts > ul#content > div.quickview-btn-box').each(function(i, elem) {
+  shop.push($(this).text().split('\n'))
+})
+console.log(shop)
