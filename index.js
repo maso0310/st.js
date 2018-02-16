@@ -12,21 +12,17 @@ bot.on('message', function(event) {
   //事件訊息屬性判定，是否為文字
   if (event.message.type = 'text')  
   {
-    //設定要搜尋的網址頁面與用戶訊息之關聯，還不知道怎麼做
-    //跟網頁要資料，取得整個網頁"body"
     var request = require('request')
     var url = 'http://tw.shop.com/maso0310/search/'+event.message.text;
     request({url ,headers:{'user-agent':'node.js'} },
       function (err, res, body)
-      {
+      { console.log(body)
         const cheerio = require('cheerio');
         const $ = cheerio.load(body);
         let shop = [];
         $('div.product-info')
         .each(function(i, elem) {
         shop.push($(this).text())
-
-
       })
       })
       event.reply(shop).then(function(data) {
