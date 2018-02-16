@@ -14,7 +14,7 @@ bot.on('message', function(event) {
     //設定要搜尋的網址頁面與用戶訊息之關聯，還不知道怎麼做
     //跟網頁要資料，取得整個網頁"body"
     var request = require('request')
-    var url = 'http://tw.shop.com/maso0310/search/htc'
+    var url = 'http://tw.shop.com/maso0310/search/'+event.message.text;
     request({url ,headers:{'user-agent':'node.js'} },
       function (err, res, body)
       {
