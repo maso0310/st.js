@@ -26,16 +26,15 @@ bot.on('message', function(event) {
         .each(function(i, elem) {
         shop.push($(this).text())
 
-
+        event.reply(shop).then(function(data) {
+          // 傳送訊息成功時，可在此寫程式碼 
+          console.log(shop);
+        }).catch(function(error) {
+          // 傳送訊息失敗時，可在此寫程式碼 
+          console.log('錯誤產生，錯誤碼：'+error);
+        });
       })
       })
-      event.reply(shop).then(function(data) {
-        // 傳送訊息成功時，可在此寫程式碼 
-        console.log(shop);
-      }).catch(function(error) {
-        // 傳送訊息失敗時，可在此寫程式碼 
-        console.log('錯誤產生，錯誤碼：'+error);
-      });
   }
 });
 
