@@ -6,7 +6,7 @@ request({url ,headers:{'user-agent':'node.js'} },
   const cheerio = require('cheerio');
   const $ = cheerio.load(body);
   let shop = []
-  $('div.product-info')
+  $('div.product-image')
   .each(function(i, elem) {
   shop.push($(this).text())
   console.log(shop)

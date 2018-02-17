@@ -12,8 +12,11 @@
     "cheerio": "^1.0.0-rc.2",
     "error": "^7.0.2",
     "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "iconv-lite": "^0.4.19",
     "linebot": "^1.4.1",
     "parent": "0.0.1",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "sync-request": "^5.0.0"
   }
 }
