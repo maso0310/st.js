@@ -22,11 +22,11 @@ bot.on('message', function(event) {
       actions: [{
         type: 'uri',
         linkUri: "https://tw.shop.com/search/HTC",
-        area: { x: 0, y: 0, width: 196.8, height: 480 }
+        area: { x: 500, y: 500, width: 196.8, height: 480 }
       }, {
         type: 'message',
         text: 'hello',
-        area: { x: 520, y: 0, width: 196.8, height: 480 }
+        area: { x: 500, y: 500, width: 196.8, height: 480 }
       }]
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
