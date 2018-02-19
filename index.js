@@ -15,19 +15,46 @@ bot.on('message', function(event) {
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
-      type: 'imagemap',
-      baseUrl: 'https://www.google.com',
-      altText: 'this is an imagemap',
-      baseSize: { height: 1040, width: 1040 },
-      actions: [{
-        type: 'uri',
-        linkUri: 'https://example.com/',
-        area: { x: 0, y: 0, width: 520, height: 1040 }
-      }, {
-        type: 'message',
-        text: 'hello',
-        area: { x: 520, y: 0, width: 520, height: 1040 }
-      }]
+      type: 'template',
+      altText: 'this is a carousel template',
+      template: {
+        type: 'carousel',
+        columns: [{
+          thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+          title: 'this is menu',
+          text: 'description',
+          actions: [{
+            type: 'postback',
+            label: 'Buy',
+            data: 'action=buy&itemid=111'
+          }, {
+            type: 'postback',
+            label: 'Add to cart',
+            data: 'action=add&itemid=111'
+          }, {
+            type: 'uri',
+            label: 'View detail',
+            uri: 'http://example.com/page/111'
+          }]
+        }, {
+          thumbnailImageUrl: 'https://example.com/bot/images/item2.jpg',
+          title: 'this is menu',
+          text: 'description',
+          actions: [{
+            type: 'postback',
+            label: 'Buy',
+            data: 'action=buy&itemid=222'
+          }, {
+            type: 'postback',
+            label: 'Add to cart',
+            data: 'action=add&itemid=222'
+          }, {
+            type: 'uri',
+            label: 'View detail',
+            uri: 'http://example.com/page/222'
+          }]
+        }]
+      }
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
