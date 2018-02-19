@@ -12,27 +12,14 @@ var bot = linebot({
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var request = require('request')
-    var url = 'http://tw.shop.com/maso0310/search/'+event.message.text;
-    request({url ,headers:{'user-agent':'node.js'} },
-      function (err, res, body)
-      {
-      const cheerio = require('cheerio');
-      const $ = cheerio.load(body);
-      let shop = []
-      $(' p.cashback')
-      .each(function(i,elem) {
-      shop.push($(this).text())
-    })
-
+    var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(shop).then(function(data) {
+    event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(shop);
+      console.log(msg);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
-    })
     });
   }
 });
