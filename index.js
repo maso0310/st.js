@@ -20,7 +20,7 @@ bot.on('message', function(event) {
       const cheerio = require('cheerio');
       const $ = cheerio.load(body);
       let shop = []
-      $('section.product-header , span.final-price , p.cashback')
+      $(' p.cashback')
       .each(function(i,elem) {
       shop.push($(this).text())
     })
