@@ -25,7 +25,7 @@ bot.on('message', function(event) {
       shop.push($(this).text())
       console.log(shop)
     })
-    })
+
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(shop).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
@@ -33,6 +33,7 @@ bot.on('message', function(event) {
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
+    })
     });
   }
 });
