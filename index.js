@@ -23,12 +23,7 @@ bot.on('message', function(event) {
       $(' section.product-header , span.final-price , p.cashback')
       .each(function(i,elem) {
       shop.push($(this).text())
-      console.log(shop)
     })
-
-    
-
-  //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(shop).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(shop);
