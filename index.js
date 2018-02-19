@@ -17,7 +17,7 @@ bot.on('message', function(event) {
     event.reply({
       type: 'imagemap',
       baseUrl: "https://tw.shop.com/search/HTC?_ignore=",
-      altText: 'this is an imagemap',
+      altText: '你想找的商品資訊',
       baseSize: { height: 1040, width: 1040 },
       actions: [{
         type: 'uri',
