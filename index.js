@@ -1,5 +1,13 @@
 var linebot = require('linebot');
 var express = require('express');
+const crypto = require('crypto');
+const channelSecret = '6baf8c3075c7c10d98b7f1d4afcf2146'; // Channel secret string
+const body = ''; 
+// Request body string
+const signature =
+  createHmac('SHA256', channelSecret)
+  .update(body).digest('base64');
+// Compare X-Line-Signature request header and the signature
 
 var bot = linebot({
   channelId: '機器人',
@@ -14,7 +22,7 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var url = "https://tw.shop.com/maso0310/search/"+event.message.text;
     var request = require('request')
-    request({url,headers:{'user-agent':'node.js'} },
+    request(url ,
     function (err, res, body)
     {
     const cheerio = require('cheerio');
