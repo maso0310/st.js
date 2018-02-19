@@ -12,20 +12,8 @@ var bot = linebot({
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-  var request = require('request')
-  var url = "https://tw.shop.com/maso0310/search/"+event.message.text;
-  request({url ,headers:{'user-agent':'node.js'} },
-  function (err, res, body)
-  {
-  const cheerio = require('cheerio');
-  const $ = cheerio.load(body);
-  const $imgdom = $("div.product-image");
-  $imgdom.find('img').each(function(index , el) {
-  var imgurl = $(this).attr("src")
-  var a = imgurl.split('br/',1)
-  })
-  })
-
+    var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
+    
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'template',
@@ -33,37 +21,37 @@ bot.on('message', function(event) {
       template: {
         type: 'carousel',
         columns: [{
-          thumbnailImageUrl: a[0],
+          thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
           title: 'this is menu',
           text: 'description',
           actions: [{
             type: 'postback',
-            label: '價格',
+            label: 'Buy',
             data: 'action=buy&itemid=111'
           }, {
             type: 'postback',
-            label: '現金回饋',
+            label: 'Add to cart',
             data: 'action=add&itemid=111'
           }, {
             type: 'uri',
-            label: '查看詳細資訊',
+            label: 'View detail',
             uri: "https://tw.shop.com/maso0310/search/"+event.message.text,
           }]
         }, {
-          thumbnailImageUrl: a[1],
+          thumbnailImageUrl: 'https://img.shop.com/Image/images/shopcom/shop-com-1200x630.jpg?_ignore=',
           title: 'this is menu',
           text: 'description',
           actions: [{
             type: 'postback',
-            label: '價格',
+            label: 'Buy',
             data: 'action=buy&itemid=222'
           }, {
             type: 'postback',
-            label: '現金回饋',
+            label: 'Add to cart',
             data: 'action=add&itemid=222'
           }, {
             type: 'uri',
-            label: '查看詳細資訊',
+            label: 'View detail',
             uri: "https://tw.shop.com/maso0310/search/"+event.message.text
           }]
         }]
