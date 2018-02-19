@@ -2,7 +2,7 @@ var linebot = require('linebot');
 var express = require('express');
 const crypto = require('crypto');
 const channelSecret = '6baf8c3075c7c10d98b7f1d4afcf2146'; // Channel secret string
-const body = ''; 
+const body = 'https://maso0310.herokuapp.com/'; 
 // Request body string
 const signature =
   createHmac('SHA256', channelSecret)
