@@ -21,7 +21,7 @@ bot.on('message', function(event) {
       template: {
         type: 'carousel',
         columns: [{
-          thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+          thumbnailImageUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1561809393__175x175__.jpg?_ignore=',
           title: 'this is menu',
           text: 'description',
           actions: [{
@@ -38,7 +38,7 @@ bot.on('message', function(event) {
             uri: "https://tw.shop.com/maso0310/search/"+event.message.text,
           }]
         }, {
-          thumbnailImageUrl: 'https://img.shop.com/Image/images/shopcom/shop-com-1200x630.jpg?_ignore=',
+          thumbnailImageUrl: 'https://img.shop.com/Image/260000/265700/265733/products/1568745891__175x175__.jpg?_ignore=',
           title: 'this is menu',
           text: 'description',
           actions: [{
