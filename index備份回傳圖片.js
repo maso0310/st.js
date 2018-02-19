@@ -13,18 +13,24 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
-    var request = require('request');
-    var cheerio = require('cheerio');
-    var $ = cheerio.load(body);
-    var shop = [];
-    request({msg, headers:{'user-agent':'node.js'}}),function(err,res,body)
-    {
-    $ = cheerio.load(body);$('div p').each(function(i,elem){shop.push($(this).text())})
-    }
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(shop).then(function(data) {
+    event.reply({
+      type: 'imagemap',
+      baseUrl: "https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg",
+      altText: 'this is an imagemap',
+      baseSize: { height: 175, width: 175 },
+      actions: [{
+        type: 'uri',
+        linkUri: "https://tw.shop.com/search/HTC",
+        area: { x: 500, y: 500, width: 175, height: 175 }
+      }, {
+        type: 'message',
+        text: 'hello',
+        area: { x: 500, y: 500, width: 175, height: 175 }
+      }]
+    }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(shop);
+      console.log(msg);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
