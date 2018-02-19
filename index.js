@@ -15,9 +15,19 @@ bot.on('message', function(event) {
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
-      type: 'image',
-      originalContentUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg , https://img.shop.com/Image/250000/252100/252124/products/1561809393__175x175__.jp',
-      previewImageUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg ,https://img.shop.com/Image/250000/252100/252124/products/1561809393__175x175__.jpg'
+      type: 'imagemap',
+      baseUrl: 'https://example.com/bot/images/rm001',
+      altText: 'this is an imagemap',
+      baseSize: { height: 1040, width: 1040 },
+      actions: [{
+        type: 'uri',
+        linkUri: 'https://example.com/',
+        area: { x: 0, y: 0, width: 520, height: 1040 }
+      }, {
+        type: 'message',
+        text: 'hello',
+        area: { x: 520, y: 0, width: 520, height: 1040 }
+      }]
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
