@@ -16,7 +16,7 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'imagemap',
-      baseUrl: "https://tw.shop.com/search/HTC?_ignore=",
+      baseUrl: "https://www.penghu-nsa.gov.tw/FileDownload/Album/Big/20161012162551758864338.jpg?_ignore=",
       altText: '你想找的商品資訊',
       baseSize: { height: 1040, width: 1040 },
       actions: [{
