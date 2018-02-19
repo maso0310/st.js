@@ -33,7 +33,7 @@ bot.on('message', function(event) {
         type: 'carousel',
         columns: [{
           thumbnailImageUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1561809393__175x175__.jpg?_ignore=',
-          title: 'this is menu',
+          title: '第一項',
           text: 'description',
           actions: [{
             type: 'postback',
@@ -46,11 +46,11 @@ bot.on('message', function(event) {
           }, {
             type: 'uri',
             label: '查看詳細資訊',
-            uri: "https://tw.shop.com/maso0310/search/"+event.message.text,
+            uri: url,
           }]
         }, {
           thumbnailImageUrl: 'https://img.shop.com/Image/260000/265700/265733/products/1568745891__175x175__.jpg?_ignore=',
-          title: 'this is menu',
+          title: '第二項',
           text: 'description',
           actions: [{
             type: 'postback',
@@ -63,7 +63,7 @@ bot.on('message', function(event) {
           }, {
             type: 'uri',
             label: '查看詳細資訊',
-            uri: "https://tw.shop.com/maso0310/search/"+event.message.text
+            uri: url
           }]
         }]
       }
