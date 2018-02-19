@@ -20,10 +20,9 @@ bot.on('message', function(event) {
       const cheerio = require('cheerio');
       const $ = cheerio.load(body);
       let shop = []
-      $('ul.content , section.product-header , span.final-price , p.cashback')
+      $('section.product-header , span.final-price , p.cashback')
       .each(function(i,elem) {
       shop.push($(this).text())
-      console.log(shop)
     })
 
   //收到文字訊息時，直接把收到的訊息傳回去
