@@ -16,12 +16,12 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'imagemap',
-      baseUrl: "https://tw.shop.com/maso0310/search/"+event.message.text,
+      baseUrl: "http://www.webtech.tw/info.php?tid=HTML_Image_Map_%E5%BD%B1%E5%83%8F%E5%9C%B0%E5%9C%96%E8%A8%AD%E8%A8%88",
       altText: 'this is an imagemap',
       baseSize: { height: 1040, width: 1040 },
       actions: [{
         type: 'uri',
-        linkUri: "https://tw.shop.com/maso0310/search/"+event.message.text,
+        linkUri: "http://www.webtech.tw/info.php?tid=HTML_Image_Map_%E5%BD%B1%E5%83%8F%E5%9C%B0%E5%9C%96%E8%A8%AD%E8%A8%88",
         area: { x: 0, y: 0, width: 196.8, height: 480 }
       }, {
         type: 'message',
