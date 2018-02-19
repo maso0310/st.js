@@ -15,21 +15,9 @@ bot.on('message', function(event) {
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
-      type: 'template',
-      altText: 'this is a confirm template',
-      template: {
-        type: 'confirm',
-        text: 'Are you sure?',
-        actions: [{
-          type: 'message',
-          label: 'Yes',
-          text: 'yes'
-        }, {
-          type: 'message',
-          label: 'No',
-          text: 'no'
-        }]
-      }
+      type: 'sticker',
+      packageId: '1',
+      stickerId: '1'
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
