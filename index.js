@@ -13,7 +13,20 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
+    var request = require('request')
+    request({url ,headers:{'user-agent':'node.js'} },
+    function (err, res, body)
+    {
+    const cheerio = require('cheerio');
+    const $ = cheerio.load(body);
+    const $imgdom = $("div.product-image");
+    $imgdom.find('img').each(function(index , el) {
+    var imgurl = $(this).attr("src")
+    var a = imgurl.substr(0,82)
+    console.log(a);
     
+    })
+    })
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'template',
