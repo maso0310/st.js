@@ -14,7 +14,7 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var url = "https://tw.shop.com/maso0310/search/"+event.message.text;
     var request = require('request');
-    request({url ,headers:{'user-agent':'node.js'} },
+    request({url ,headers:{'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'} },
       function (err, res, body)
       {
       const cheerio = require('cheerio');
