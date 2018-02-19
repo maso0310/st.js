@@ -19,41 +19,41 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'template',
-      altText: '我找到好多你想買的東西喔',
+      altText: 'I find so many goods youwant',
       template: {
         type: 'carousel',
         columns: [{
           thumbnailImageUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1561809393__175x175__.jpg?_ignore=',
-          title: '第一項',
+          title: 'first',
           text: 'description',
           actions: [{
             type: 'postback',
-            label: '價格',
+            label: 'price',
             data: 'action=buy&itemid=111'
           }, {
             type: 'postback',
-            label: '現金回饋',
+            label: 'cashback',
             data: 'action=add&itemid=111'
           }, {
             type: 'uri',
-            label: '查看詳細資訊',
+            label: 'detail',
             uri: url,
           }]
         }, {
           thumbnailImageUrl: 'https://img.shop.com/Image/260000/265700/265733/products/1568745891__175x175__.jpg?_ignore=',
-          title: '第二項',
+          title: 'second',
           text: 'description',
           actions: [{
             type: 'postback',
-            label: '價格',
+            label: 'price',
             data: 'action=buy&itemid=222'
           }, {
             type: 'postback',
-            label: '現金回饋',
+            label: 'cashback',
             data: 'action=add&itemid=222'
           }, {
             type: 'uri',
-            label: '查看詳細資訊',
+            label: 'detail',
             uri: url
           }]
         }]
