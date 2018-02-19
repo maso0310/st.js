@@ -16,12 +16,12 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'imagemap',
-      baseUrl: 'https://tw.shop.com/maso0310',
+      baseUrl: 'http://www.cwb.gov.tw/V7/',
       altText: 'this is an imagemap',
       baseSize: { height: 1040, width: 1040 },
       actions: [{
         type: 'uri',
-        linkUri: 'https://tw.shop.com/maso0310',
+        linkUri: 'http://www.cwb.gov.tw/V7/',
         area: { x: 0, y: 0, width: 520, height: 1040 }
       }, {
         type: 'message',
