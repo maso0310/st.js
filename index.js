@@ -12,7 +12,22 @@ var bot = linebot({
 //這邊想要做的是判讀如何回應
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
+    var url = "https://tw.shop.com/maso0310/search/"+event.message.text;
+    var request = require('request');
+    request({url ,headers:{'user-agent':'node.js'} },
+      function (err, res, body)
+      {
+      const cheerio = require('cheerio');
+      const $ = cheerio.load(body);
+      let shop = []
+      $(' section.product-header , span.final-price , p.cashback')
+      .each(function(i,elem) {
+      shop.push($(this).text())
+      console.log(shop)
+    })
+
+    
+
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
@@ -21,6 +36,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
+  })
   }
 });
 
