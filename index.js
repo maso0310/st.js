@@ -21,7 +21,7 @@ bot.on('message', function(event) {
       baseSize: { height: 1040, width: 1040 },
       actions: [{
         type: 'uri',
-        linkUri: "https://tw.shop.com/search/HTC/1040",
+        linkUri: "https://tw.shop.com/search/HTC",
         area: { x: 0, y: 0, width: 520, height: 1040 }
       }, {
         type: 'message',
