@@ -15,19 +15,46 @@ bot.on('message', function(event) {
     var msg = "https://tw.shop.com/maso0310/search/"+event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
-      type: 'imagemap',
-      baseUrl: "https://img.shop.com/Image/images/shopcom/shop-com-1200x630.jpg?_ignore=",
-      altText: '你想找的商品資訊',
-      baseSize: { height: 1040, width: 1040 },
-      actions: [{
-        type: 'uri',
-        linkUri: msg,
-        area: { x: 0, y: 0, width: 1040, height: 1040 }
-      }, {
-        type: 'message',
-        text: 'hello',
-        area: { x: 520, y: 0, width: 520, height: 175 }
-      }]
+      type: 'template',
+      altText: 'this is a carousel template',
+      template: {
+        type: 'carousel',
+        columns: [{
+          thumbnailImageUrl: 'https://example.com/bot/images/item1.jpg',
+          title: 'this is menu',
+          text: 'description',
+          actions: [{
+            type: 'postback',
+            label: 'Buy',
+            data: 'action=buy&itemid=111'
+          }, {
+            type: 'postback',
+            label: 'Add to cart',
+            data: 'action=add&itemid=111'
+          }, {
+            type: 'uri',
+            label: 'View detail',
+            uri: "https://tw.shop.com/maso0310/search/"+event.message.text,
+          }]
+        }, {
+          thumbnailImageUrl: 'https://img.shop.com/Image/images/shopcom/shop-com-1200x630.jpg?_ignore=',
+          title: 'this is menu',
+          text: 'description',
+          actions: [{
+            type: 'postback',
+            label: 'Buy',
+            data: 'action=buy&itemid=222'
+          }, {
+            type: 'postback',
+            label: 'Add to cart',
+            data: 'action=add&itemid=222'
+          }, {
+            type: 'uri',
+            label: 'View detail',
+            uri: "https://tw.shop.com/maso0310/search/"+event.message.text
+          }]
+        }]
+      }
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
