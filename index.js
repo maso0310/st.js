@@ -16,8 +16,8 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'image',
-      originalContentUrl: 'https://example.com/original.jpg',
-      previewImageUrl: 'https://example.com/preview.jpg'
+      originalContentUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg',
+      previewImageUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg'
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
