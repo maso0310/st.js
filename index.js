@@ -21,7 +21,7 @@ bot.on('message', function(event) {
       baseSize: { height: 1040, width: 1040 },
       actions: [{
         type: 'uri',
-        linkUri: 'http://www.cwb.gov.tw/V7/',
+        linkUri: 'https://tw.yahoo.com/',
         area: { x: 0, y: 0, width: 520, height: 1040 }
       }, {
         type: 'message',
