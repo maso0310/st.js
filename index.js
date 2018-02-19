@@ -16,12 +16,12 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply({
       type: 'imagemap',
-      baseUrl: "https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg?_ignore=",
+      baseUrl: "https://tw.shop.com/maso0310/search/"+event.message.text+"?_ignore=",
       altText: 'this is an imagemap',
       baseSize: { height: 1040, width: 1040 },
       actions: [{
         type: 'uri',
-        linkUri: "https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg/1040",
+        linkUri: "https://tw.shop.com/maso0310/search/"+event.message.text+"1040",
         area: { x: 0, y: 0, width: 520, height: 1040 }
       }, {
         type: 'message',
