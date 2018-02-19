@@ -18,15 +18,15 @@ bot.on('message', function(event) {
       type: 'imagemap',
       baseUrl: "https://img.shop.com/Image/250000/252100/252124/products/1571889306__175x175__.jpg",
       altText: 'this is an imagemap',
-      baseSize: { height: 1040, width: 1040 },
+      baseSize: { height: 175, width: 175 },
       actions: [{
         type: 'uri',
         linkUri: "https://tw.shop.com/search/HTC",
-        area: { x: 500, y: 500, width: 196.8, height: 480 }
+        area: { x: 500, y: 500, width: 175, height: 175 }
       }, {
         type: 'message',
         text: 'hello',
-        area: { x: 500, y: 500, width: 196.8, height: 480 }
+        area: { x: 500, y: 500, width: 175, height: 175 }
       }]
     }).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
