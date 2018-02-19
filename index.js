@@ -21,8 +21,7 @@ bot.on('message', function(event) {
   const $ = cheerio.load(body);
   const $imgdom = $("div.product-image");
   $imgdom.find('img').each(function(index , el) {
-  var imgurl = $(this).attr("src")
-  var a = imgurl.split('br/',1)
+  var imgurl = $(this).attr("src");
   })
   })
 
@@ -33,7 +32,7 @@ bot.on('message', function(event) {
       template: {
         type: 'carousel',
         columns: [{
-          thumbnailImageUrl: a[0],
+          thumbnailImageUrl: 'https://img.shop.com/Image/250000/252100/252124/products/1561809393__175x175__.jpg',
           title: 'this is menu',
           text: 'description',
           actions: [{
@@ -50,7 +49,7 @@ bot.on('message', function(event) {
             uri: "https://tw.shop.com/maso0310/search/"+event.message.text,
           }]
         }, {
-          thumbnailImageUrl: a[1],
+          thumbnailImageUrl: 'https://img.shop.com/Image/260000/265700/265733/products/1568745891__175x175__.jpg',
           title: 'this is menu',
           text: 'description',
           actions: [{

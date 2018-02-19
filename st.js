@@ -8,7 +8,8 @@ const $ = cheerio.load(body);
 const $imgdom = $("div.product-image");
 $imgdom.find('img').each(function(index , el) {
 var imgurl = $(this).attr("src")
-var a = imgurl.split('br/',1)
+var a = imgurl.substr(0,82)
 console.log(a);
+
 })
 })
