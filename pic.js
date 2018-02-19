@@ -6,14 +6,22 @@ const requests = require('sync-request') //node的网络请求
 
 const request = require('request') //利用request模块保存图片
 
-let count = 0 // 记录扒取的图片数量
+let count = 1 // 记录扒取的图片数量
 
 let imgDirName = '' // 图片存放的目录
 
 var url = "https://tw.shop.com/maso0310/search/htc"; // 目标网站
+
+var headers = 
+{
+  'user-agent':'node.js',
+  'referer':'https://tw.shop.com/search/htc'
+}
+
+
 // 拿到网站内容转化成html字符串
 
-request( {url ,headers:{'user-agent':'node.js','referer':'https://tw.shop.com/'} },
+request( {url ,headers,method :"GET"},
   function (err, res, body)
   {
 
@@ -39,7 +47,7 @@ function filterSlideList(body) {
 
         //创建放图片的文件夹
 
-        fs.mkdir('./img/' + imgarrname + '/', (err) => {
+        fs.mkdir( './img/' + imgarrname + '/', (err) => {
 
             if (err) {
 
@@ -61,7 +69,7 @@ function filterSlideList(body) {
 
             // 利用request模块保存图片
 
-            request(imgurl).pipe(fs.createWriteStream('./img/' + imgarrname + '/' + imgnam + imgid + '.jpg'))
+            request(imgurl).pipe(fs.createWriteStream('./img/' + imgarrname + '/' + count + '.jpg' ))
 
             // '''''''''''''''''''''''''''''''''''''''''''''''''图片目录'''''''''''''  拼接的图片名    '''''
 

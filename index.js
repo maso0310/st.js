@@ -1,80 +1,47 @@
-const fs = require('fs') //创建文件、文件夹
+var linebot = require('linebot');
+var express = require('express');
 
-const cheerio = require('cheerio') //cheerio爬虫
+var bot = linebot({
+  channelId: '機器人',
+  channelSecret: '6baf8c3075c7c10d98b7f1d4afcf2146',
+  channelAccessToken: '295PO7c2FbLmq2jHznxmISTQciVcWy7DnEIArWCgSUKWPsorlKbbuRURYIYxWZYJXjlQ2Wj9Ik8nwuAz2qB2rc4EfKN56kdvBERkjx7F1OOPsjx8cdCNGhoLQtVfAR+TrFsuw73JsEKI2IA9gE719gdB04t89/1O/w1cDnyilFU='
+});
 
-const requests = require('sync-request') //node的网络请求
 
-const request = require('request') //利用request模块保存图片
 
-let count = 0 // 记录扒取的图片数量
+//這邊想要做的是判讀如何回應
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+    var request = require('request')
+    var url = 'http://tw.shop.com/maso0310/search/'+event.message.text;
+    request({url ,headers:{'user-agent':'node.js'} },
+      function (err, res, body)
+      {
+      const cheerio = require('cheerio');
+      const $ = cheerio.load(body);
+      let shop = []
+      $('ul.content , section.product-header , span.final-price , p.cashback')
+      .each(function(i,elem) {
+      shop.push($(this).text())
+      console.log(shop)
+    })
+    })
+  //收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(shop).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(shop);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }
+});
 
-let imgDirName = '' // 图片存放的目录
+const app = express();
+const linebotParser = bot.parser();
+app.post('/', linebotParser);
 
-var url = "https://tw.shop.com/maso0310/search/htc"; // 目标网站
-// 拿到网站内容转化成html字符串
-
-request( {url ,headers:{'user-agent':'node.js','referer':'https://tw.shop.com/'} },
-  function (err, res, body)
-  {
-
-// 调用自己的方法
-
-filterSlideList(body)
-
-function filterSlideList(body) {
-
-    if (body) {
-
-        var $ = cheerio.load(body); // 利用cheerio模块将完整的html装载到变量$中，之后就可以像jQuery一样操作html了
-
-        // 拿到图片的父容器
-
-        var $imgdom = $("div.product-image");
-
-        // 拿到主题,并使用主题名字(名字太长，截取一下)创建文件夹
-
-        var imgarrname = $("title").text().substr(0, 50);
-
-        console.log("开始爬 " + imgarrname + " 主题的图片")
-
-        //创建放图片的文件夹
-
-        fs.mkdir('./img/' + imgarrname + '/', (err) => {
-
-            if (err) {
-
-                console.log(err)
-
-            }
-
-        })
-
-        //取每一张图片，并把图片放到目录下
-
-        $imgdom.find('img').each(function(index , el) {
-
-            var imgurl = $(this).attr("src"), //拿到图片的在线链接
-
-                imgnam = $(this).attr("alt"), //拿到图片的标题
-
-                imgid = $(this).attr("id"); //图片名字有可能重复，取到唯一id
-
-            // 利用request模块保存图片
-
-            request(imgurl).pipe(fs.createWriteStream('./img/' + imgarrname + '/' + imgnam + imgid + '.jpg'))
-
-            // '''''''''''''''''''''''''''''''''''''''''''''''''图片目录'''''''''''''  拼接的图片名    '''''
-
-            count++;
-
-            console.log(imgurl);
-
-            console.log(imgnam);
-
-            console.log('已爬取图片' + count + '张');
-
-        });
-
-    }
-
-}})
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log('目前的port是', port);
+});
